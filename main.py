@@ -13,6 +13,7 @@ from ctypes.util import find_library
 
 load_dotenv()
 TOPIC_ID = os.getenv("TOPIC_ID")
+# May have to hardcode value
 
 # API call to ntfy for push notificaiton
 def send_notification(): 
@@ -74,7 +75,7 @@ def volmeter_callback(data, mag, peak, input):
 
 ### Callback Monitoring ### 
 def clip_volume_monitoring(volume):
-    if float(volume) >= 0:
+    if float(volume) >= -12:
         print(f"Audio Value: {volume}")
         print("!---------- clipped ----------!")
         send_notification()
